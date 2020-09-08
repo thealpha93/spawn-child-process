@@ -1,17 +1,13 @@
-require 'active_support/all'
+# require 'active_support/all'
+require 'json'
+require 'active_support/core_ext/time'
 
-# def sum_eq_n?()
-#   return true if arr.empty? && n == 0
+time_zones = JSON.parse(ARGV[0])
+converted_timezones = {}
 
-#   arr.product(arr).reject { |a,b| a == b }.any? { |a,b| a + b == n }
-# end
+time_zones.each do |key, value|
+    Time.zone = value['timezone']
+    converted_timezones[key] = Time.zone.tzinfo.to_s.sub(' - ', '/').sub(' ', '_')
+end
 
-# sum_eq_n?()
-
-# ARGV.each do|a|
-#   puts "Argument: #{a}"
-# end
-
-puts ARGV[0]
-Time.zone = ARGV[0]
-puts DateTime.now.in_time_zone
+converted_timezones
