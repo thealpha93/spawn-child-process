@@ -33,7 +33,7 @@ function runRubyAsChild(timezones) {
 
   });
 }
-const getTimezone = async () => {
+const getJsSpecificTimezone = async () => {
 
   const obj = {
     '249683': { timezone: 'Pacific Time (US & Canada)' },
@@ -110,4 +110,4 @@ const getTimezone = async () => {
   }
 }
 
-getTimezone()
+getJsSpecificTimezone()
