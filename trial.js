@@ -99,9 +99,11 @@ const getJsSpecificTimezone = async () => {
   }
   
   try {
+    console.log(process.env)
     const output = await runRubyAsChild(obj)
-    logOutput('main')(output[output.length-1])
+    logOutput('main')(JSON.parse(output[output.length-1]))
     // logOutput('main')(output)
+    return output[output.length-1]
     // console.log(new Date(output[output.length-1]))
     process.exit(0)
   } catch (e) {

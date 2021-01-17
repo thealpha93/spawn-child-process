@@ -10,4 +10,4 @@ time_zones.each do |key, value|
     converted_timezones[key] = Time.zone.tzinfo.to_s.sub(' - ', '/').sub(' ', '_')
 end
 
-converted_timezones
+JSON.generate(converted_timezones)
